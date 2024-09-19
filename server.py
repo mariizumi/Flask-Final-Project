@@ -17,13 +17,16 @@ def emote_detector():
     sadness = response["sadness"]
     dom_emotion = response["dominant_emotion"]
 
-    return ("For the given statement, the system response is "
-              f"\'anger\': {anger}, "
-              f"\'disgust\': {disgust}, "
-              f"\'fear\': {fear}, "
-              f"\'joy\': {joy}, "
-              f"\'sadness\': {sadness}. "
-              f"The dominant emotion is {dom_emotion}.")
+    if dom_emotion is None:
+        return "Invalid text! Please try again!"
+    else:
+        return ("For the given statement, the system response is "
+                f"\'anger\': {anger}, "
+                f"\'disgust\': {disgust}, "
+                f"\'fear\': {fear}, "
+                f"\'joy\': {joy}, "
+                f"\'sadness\': {sadness}. "
+                f"The dominant emotion is {dom_emotion}.")
 
 @app.route("/")
 def render_index_page():
